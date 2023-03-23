@@ -2,7 +2,7 @@ let config = {
     type: Phaser.CANVAS,
     width: 640,
     height: 360,
-    scene: [Play]
+    scene: [Menu, Play, Sevenout, Crapout]
 }
 
 let game = new Phaser.Game(config);
@@ -13,4 +13,4 @@ let borderPadding = borderUISize / 3;
 
 // reserve keyboard varriables
 let keySpace
-var coRoll, point, chips, passBet, dontPassBet
+var coRoll, point

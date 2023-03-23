@@ -2,18 +2,7 @@ class Play extends Phaser.Scene {
     constructor() {
         super("playScene");
     }
-    preload(){
-        this.load.image('main_bg', './assets/main_bg.png')
-        this.load.image('button_roll', './assets/button_roll.png');
-        this.load.image('dice_1', './assets/1.png')
-        this.load.image('dice_2', './assets/2.png')
-        this.load.image('dice_3', './assets/3.png')
-        this.load.image('dice_4', './assets/4.png')
-        this.load.image('dice_5', './assets/5.png')
-        this.load.image('dice_6', './assets/6.png')
-        this.load.spritesheet("dice_sheet", "./assets/dice.png", { frameWidth: 64, frameHeight: 64 });
-    }   
-
+    
     create(){
 
         this.coRoll = true;
@@ -74,7 +63,7 @@ class Play extends Phaser.Scene {
         if(this.coRoll){
             if (this.diceSum == 2 || this.diceSum == 3 || this.diceSum == 12){
                 this.gameOver = true;
-                this.teext.setText("Crapped out! You rolled a 2, 3, or 12.")
+                this.scene.start("crapoutScene");
             }
             if(this.diceSum == 4 || this.diceSum == 5 || this.diceSum == 6 || this.diceSum == 8 || this.diceSum == 9 || this.diceSum == 10 || this.diceSum == 11){
                 this.point = this.diceSum;
@@ -91,6 +80,7 @@ class Play extends Phaser.Scene {
             
             if (this.diceSum == 7){
                 this.gameOver = true;
+                this.scene.start("sevenoutScene");
                 this.texxt.setText("Seven out! You rolled a 7.")
             }
             if(this.point == this.diceSum && this.rollNumber !=this.rollnum ){
@@ -110,12 +100,13 @@ class Play extends Phaser.Scene {
     }
     }
     
-    shoot(){
-        this.die1 = Phaser.Math.Between(1,6);
-        this.die2 = Phaser.Math.Between(1,6);
+    shoot(){ //rolls the dice
+        this.die1 = Phaser.Math.Between(1,6); //rolls die 1
+        this.die2 = Phaser.Math.Between(1,6); //rolls die 2
         
-        this.die1Sprite.anims.play('roll');
+        this.die1Sprite.anims.play('roll'); //sets up sprites
         this.die2Sprite.anims.play('roll');
+        this.sound.play('sfx_dice');
 
          this.die1Sprite.on('animationcomplete', () => {    // callback after anim completes
             this.die1Sprite.setFrame(this.die1 - 1);
@@ -126,7 +117,7 @@ class Play extends Phaser.Scene {
 
         this.diceSum = this.die1 + this.die2;
         this.rollnum++;
-        return this.diceSum;
+        return this.diceSum; //returns die total 
     }
 
 

@@ -15,12 +15,12 @@ class Sevenout extends Phaser.Scene {
                 bottom: 5,
             },
     }
-    this.teext = this.add.text(game.config.width/2, game.config.height/2+110, 'Seven out! You rolled a 7.', this.textConfig).setOrigin(0.5);
-    this.teexxt = this.add.text(game.config.width/2, game.config.height/2-80, 'Game over, press up to reset', this.textConfig).setOrigin(0.5);
+    this.failure = this.add.text(game.config.width/2, game.config.height/2+110, 'Seven out! You rolled a 7.', this.textConfig).setOrigin(0.5);
+    this.resetText = this.add.text(game.config.width/2, game.config.height/2-80, 'Game over, press up to reset', this.textConfig).setOrigin(0.5);
 }
 update(){
     if(Phaser.Input.Keyboard.JustDown(this.keyUP)){
-        this.scene.start("playScene");
+        this.scene.start("menuScene");
     }
 }
 }

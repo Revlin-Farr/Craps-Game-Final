@@ -15,8 +15,8 @@ class Crapout extends Phaser.Scene {
                 bottom: 5,
             },
     }
-    this.teext = this.add.text(game.config.width/2, game.config.height/2+110, 'Crapped out! You rolled a 2, 3, or 12.', this.textConfig).setOrigin(0.5);
-    this.teexxt = this.add.text(game.config.width/2, game.config.height/2-80, 'Game over, press up to reset', this.textConfig).setOrigin(0.5);
+    this.failure = this.add.text(game.config.width/2, game.config.height/2+110, 'Crapped out! You rolled a 2, 3, or 12.', this.textConfig).setOrigin(0.5);
+    this.resetText = this.add.text(game.config.width/2, game.config.height/2-80, 'Game over, press up to reset', this.textConfig).setOrigin(0.5);
 }
 update(){
     if(Phaser.Input.Keyboard.JustDown(this.keyUP)){

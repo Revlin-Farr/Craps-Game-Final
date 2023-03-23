@@ -2,7 +2,7 @@ class Menu extends Phaser.Scene {
     constructor() {
         super("menuScene");
     }
-    preload(){
+    preload(){ //preload assets, dice, sound etc.
         this.load.audio('sfx_dice', './assets/Dicesound.wav');
         this.load.image('main_bg', './assets/main_bg.png');
         this.load.image('button_roll', './assets/button_roll.png');
@@ -27,9 +27,9 @@ class Menu extends Phaser.Scene {
                 bottom: 5,
             },
     }
-    this.teext = this.add.text(game.config.width/2, game.config.height/2+110, 'To begin press the up arrow.', this.textConfig).setOrigin(0.5);
-    this.teexxt = this.add.text(game.config.width/2, game.config.height/2-80, 'press the "Shoot!" button.', this.textConfig).setOrigin(0.5);
-    this.teexxxt = this.add.text(game.config.width/2, game.config.height/2-110, 'To roll the dice,', this.textConfig).setOrigin(0.5);
+    this.startText = this.add.text(game.config.width/2, game.config.height/2+110, 'To begin press the up arrow.', this.textConfig).setOrigin(0.5);
+    this.instructionsPt2 = this.add.text(game.config.width/2, game.config.height/2-80, 'press the "Shoot!" button.', this.textConfig).setOrigin(0.5); 
+    this.instructionsPt1 = this.add.text(game.config.width/2, game.config.height/2-110, 'To roll the dice,', this.textConfig).setOrigin(0.5);
 }
 update(){
     if(Phaser.Input.Keyboard.JustDown(this.keyUP)){
